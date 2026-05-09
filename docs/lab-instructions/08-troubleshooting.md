@@ -1,10 +1,5 @@
 # Troubleshooting
 
-## `az containerapp up` fails with UnicodeEncodeError on Windows
-**Symptom:** `az containerapp up` crashes with `UnicodeEncodeError: 'charmap' codec can't encode character` when streaming ACR build logs.
-**Cause:** The colorama library uses cp1252 encoding on Windows, which cannot handle Unicode characters in Docker build output.
-**Fix:** Set the environment variable before running: `$env:PYTHONUTF8 = "1"`. Alternatively, build the image separately with `az acr build --no-logs`, then create the Container App with `az containerapp create`.
-
 ## Cosmos DB connection fails locally
 **Symptom:** `python app.py` shows authentication or connection errors.
 **Cause:** The app uses `DefaultAzureCredential`, which requires an active Azure CLI login.
