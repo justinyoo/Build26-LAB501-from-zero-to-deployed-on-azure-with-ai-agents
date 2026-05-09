@@ -1,5 +1,10 @@
 # Troubleshooting
 
+## `az containerapp up` fails with UnicodeEncodeError on Windows
+**Symptom:** `az containerapp up` crashes with `UnicodeEncodeError: 'charmap' codec can't encode character` when streaming ACR build logs.
+**Cause:** The colorama library uses cp1252 encoding on Windows, which cannot handle Unicode characters in Docker build output.
+**Fix:** Set the environment variable before running: `$env:PYTHONUTF8 = "1"`. Alternatively, build the image separately with `az acr build --no-logs`, then create the Container App with `az containerapp create`.
+
 ## Cosmos DB connection fails locally
 **Symptom:** `python app.py` shows authentication or connection errors.
 **Cause:** The app uses `DefaultAzureCredential`, which requires an active Azure CLI login.
@@ -51,9 +56,9 @@
 **Fix:** Verify you're running Python 3.13+ with `python --version`. Try `pip install --upgrade pip` first.
 
 ## PowerShell quote escaping in KQL queries
-**Symptom:** KQL `where Reason_s == "PortMismatch"` fails with syntax errors in PowerShell.
+**Symptom:** KQL `where Reason_s == "ProbeFailed"` fails with syntax errors in PowerShell.
 **Cause:** PowerShell handles double quotes differently than bash.
-**Fix:** Use the `has` operator instead: `where Reason_s has "PortMismatch"`. The AI typically handles this automatically.
+**Fix:** Use the `has` operator instead: `where Reason_s has "ProbeFailed"`. The AI typically handles this automatically.
 
 ## Gunicorn port mismatch after deployment
 **Symptom:** The Container App shows 503 even after a fresh deploy.
