@@ -65,8 +65,6 @@ curl <your-endpoint-url>
 
 Review the generated Bicep files in your `infra/` directory. Depending on how `azure-prepare` ran, it may have already applied some security hardening during generation. Your job is to **audit what the AI did and didn't do**.
 
-> 💡 **No `infra/` directory?** If you deployed via `az containerapp up` or manual CLI commands (instead of the `azure-prepare` skill), no Bicep files will have been generated. In that case, review the deployed resources directly by asking Copilot to check your Container App and Cosmos DB configuration, or run `az containerapp show --name <app> -g <rg>` and `az cosmosdb show --name <db> -g <rg>` to inspect the live settings.
-
 **Say to Copilot:**
 
 ```
