@@ -11,7 +11,16 @@ AI can scaffold your Azure deployment in minutes. But would you push AI-generate
 If you're not already in the **lego-app** directory, cd into it, then prompt `copilot` to start a Copilot session. Then, say to Copilot:
 
 ```
-I have a Python Flask app in this folder that connects to an existing Azure Cosmos DB. Deploy it to Azure Container Apps. The Cosmos DB is already provisioned — don't create a new one. The app needs the environment variables COSMOS_ENDPOINT, COSMOS_DATABASE, and COSMOS_CONTAINER to connect to the database.
+Create and deploy 2 Azure services. Create and use resource group `rg-buildlab-west` in West US 2.
+
+1. **Add a Python Azure Function App** with an HTTP trigger on a Flex Consumption plan to this project.
+   - Accepts a JSON array of LEGO sets.
+   - Batch-inserts them into an existing Azure Cosmos DB in my subscription. The Cosmos DB is already provisioned — don't create a new one.
+   - Fields: `set_number` (document id), `name`, `theme_name`, `year_released`, `number_of_parts`, `type`, `image_url`.
+   - Use a **user-assigned managed identity** for Cosmos DB access.
+2. **Update the Python Flask app** in this folder to connect to the same Azure Cosmos DB in my subscription, and deploy it to Azure Container Apps.
+   - App already uses `DefaultAzureCredential` with env vars: `COSMOS_ENDPOINT`, `COSMOS_DATABASE`, `COSMOS_CONTAINER`.
+   - Use a **system-assigned managed identity** for Cosmos DB access.
 ```
 
 This single prompt triggers a **three-skill chain** — watch Copilot invoke each one:
