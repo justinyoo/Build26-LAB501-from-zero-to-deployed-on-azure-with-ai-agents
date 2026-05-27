@@ -1,8 +1,8 @@
-# Scenario 1 — Ship It & Harden It (~25 min)
+# Scenario 1 — Ship It & Harden It (~35 min)
 
 AI can scaffold your Azure deployment in minutes. But would you push AI-generated Bicep to production without reviewing it?
 
-## Part A — Ship It (~15 min)
+## Part A — Ship It (~25 min)
 
 > 🚀 **Speed tip:** This lab runs in a safe, sandboxed environment. Consider enabling **yolo mode** in Copilot CLI (`/yolo`) to auto-approve commands and skip confirmation prompts — it can save several minutes over the course of the lab.
 
