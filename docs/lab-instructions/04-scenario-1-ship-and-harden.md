@@ -15,9 +15,9 @@ If you're not already in the **lego-app** directory, cd into it, then prompt `co
    
    **Environment:**
    - Subscription: Current subscription
+   - Resource group: rg-lego-set-browser-dev
    - Azure Policy in this subscription enforces specific naming; please decode it before
-     provisioning
-   - Resource group: whatever the policy requires   
+     provisioning   
    
    **Existing Cosmos DB (do NOT create a new one):**
    - Look for the existing cosmos DB in the current subscription
