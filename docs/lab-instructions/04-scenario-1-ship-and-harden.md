@@ -8,7 +8,7 @@ AI can scaffold your Azure deployment in minutes. But would you push AI-generate
 
 > 💡 **Make sure your app is NOT currently running.** If you started `python app.py` during the checkpoint, stop it with **Ctrl+C** before proceeding.
 
-If you're not already in the **lego-app** directory, cd into it, then prompt `copilot` to start a Copilot session. Then, say to Copilot:
+If you're not already in the **lego-set-browser** directory, cd into it, then prompt `copilot` to start a Copilot session. Then, say to Copilot:
 
 ```
    Create and deploy 2 Azure services using AZD + Bicep. 
@@ -104,40 +104,7 @@ Review my deployed Container App infrastructure for production readiness gaps. C
 
 > 💡 **The AI may have already hardened some of these.** The `azure-prepare` skill includes a security hardening phase that can set up managed identity and RBAC during initial generation. If you find managed identity and AcrPull are already configured — great, that's the skill working as designed. Focus your review on what's still missing, especially Cosmos DB access via managed identity.
 
-### If managed identity for Cosmos DB is NOT configured
-
-**Say to Copilot:**
-```
-My Container App needs to access Cosmos DB using managed identity instead of keys. Set up the system-assigned managed identity with the appropriate Cosmos DB RBAC role.
-```
-
-### 4️⃣ `azure-rbac` activates
-
-Watch how it:
-- Searches Azure RBAC documentation for the minimum-privilege role for Cosmos DB data access
-- Identifies the appropriate Cosmos DB role (e.g., `Cosmos DB Built-in Data Reader` or `Cosmos DB Built-in Data Contributor` — least privilege for the app's needs)
-- Generates the exact `az cosmosdb sql role assignment create` command with your resource names
-- Explains the identity chain: Container App → System-Assigned Managed Identity → Cosmos DB RBAC role → Cosmos DB account
-
-> ℹ️ **Note:** Cosmos DB uses its own RBAC plane (not standard Azure RBAC) for data operations. The skill should generate `az cosmosdb sql role assignment create` commands rather than `az role assignment create`. If it uses standard Azure RBAC, the data operations won't work — a good learning moment about Cosmos DB's dual RBAC model.
-
-### If managed identity is already configured
-
-If the generated Bicep already includes system-assigned managed identity with appropriate roles, skip the above prompt and instead ask Copilot about remaining gaps:
-
-```
-My Container App doesn't have VNet integration. What would I need to add for network isolation?
-```
-
-or
-
-```
-How do I add an HTTP health probe to my Container App that checks the root endpoint?
-```
-
-**Other production gaps worth discussing:** Key Vault for secrets management (not just environment variables), VNet integration for network isolation (adds ~3 min provisioning time), private endpoints for Cosmos DB, and error handling in the app code (`SIGTERM` graceful shutdown for gunicorn). These are out of scope for this lab but essential in production.
-
-✅ **Checkpoint:** You've audited the generated infrastructure and either confirmed the AI hardened it or used `azure-rbac` to close the gap. The Container App should now have managed identity configured for both ACR image pulls and Cosmos DB data access.
+✅ **Checkpoint:** You've audited the generated infrastructure and either confirmed the AI hardened it or found the next steps. The Container App should now have managed identity configured for both ACR image pulls and Cosmos DB data access.
 
 **Takeaway:** The AI may build a secure deployment out of the box — or it may not. The skill's security hardening phase is non-deterministic, which is exactly why human review matters. Whether the AI did the hardening or you prompted it, the critical skill is knowing what "production-ready" looks like and verifying it.
 
