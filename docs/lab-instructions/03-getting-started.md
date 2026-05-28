@@ -55,9 +55,9 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Open a browser and navigate to `http://localhost:5000` — you should see the LEGO set browser home page with featured sets loaded from Cosmos DB. Press **Ctrl + C** to stop the running server.
+Open a browser and navigate to `http://localhost:5000` — the app will start, but you will likely see an error on the page (and a traceback in the terminal) because Cosmos DB isn't wired up yet at this point in the lab. That's expected. Press **Ctrl + C** to stop the running server.
 
-> ⚠️ **Cosmos DB connectivity:** The app connects to a pre-provisioned Cosmos DB in your lab subscription. If you see connection errors, verify you are logged in to Azure CLI (`az login`) — the app uses `DefaultAzureCredential` which picks up your CLI credentials locally.
+> ⚠️ **Cosmos DB connectivity:** At this stage the app has no `COSMOS_ENDPOINT` configured and no Cosmos DB account provisioned in your lab subscription, so requests that hit Cosmos will fail. You'll wire this up in a later scenario; for now, confirming the Flask server starts and serves the home page route is enough.
 
 ✅ You now have a working starter app ready to be integrated into AZD and Copilot CLI–driven workflows.
 
