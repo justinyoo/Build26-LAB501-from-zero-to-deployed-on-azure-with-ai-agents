@@ -11,13 +11,12 @@ AI can scaffold your Azure deployment in minutes. But would you push AI-generate
 If you're not already in the **lego-set-browser** directory, cd into it, then prompt `copilot` to start a Copilot session. Then, say to Copilot:
 
 ```
-   Create and deploy 2 Azure services using AZD + Bicep. 
-   
+  Create and deploy 2 Azure services 
+   	
    **Environment:**
    - Subscription: Current subscription
-   - Resource group: rg-lego-set-browser-dev
-   - Azure Policy in this subscription enforces specific naming; please decode it before
-     provisioning   
+   - Create a new resource group: rg-lego-set-browser-dev
+   - Region: West US 3
    
    **Existing Cosmos DB (do NOT create a new one):**
    - Look for the existing cosmos DB in the current subscription
@@ -27,9 +26,9 @@ If you're not already in the **lego-set-browser** directory, cd into it, then pr
    - Accepts JSON array of LEGO sets; batch-upserts to Cosmos DB above
    - Fields: set_number (→ id), name, theme_name, year_released, number_of_parts, type, image_url
    - User-assigned managed identity for Cosmos DB (Built-in Data Contributor)
-   - Storage account: set networkAcls.defaultAction = 'Allow' so azd can upload packages
    
    **2. Flask app in this folder → Azure Container Apps:**
+   - Name: ca-web-lego-set-browser-dev-<XXXX>
    - Already uses DefaultAzureCredential + env vars COSMOS_ENDPOINT, COSMOS_DATABASE, COSMOS_CONTAINER
    - System-assigned managed identity for Cosmos DB (Built-in Data Reader)
 ```
