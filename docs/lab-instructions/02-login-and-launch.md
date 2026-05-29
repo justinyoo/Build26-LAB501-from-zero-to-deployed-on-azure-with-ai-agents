@@ -32,10 +32,13 @@ Open this link in the browser: <https://github.com/enterprises/skillable-events/
 
 ## 4. Log in to GitHub Copilot CLI
 
-To ensure you are using the latest version, perform the following command to update Copilot CLI.
+For this lab exercise, we will be using a specific version of the Copilot CLI. 
 
 ```bash
-winget upgrade github.copilot
+winget uninstall github.copilot
+```
+```bash
+winget install github.copilot --version 1.0.48
 ```
 
 Once Copilot CLI is updated to the latest version, enter the following command:
