@@ -32,7 +32,6 @@ If you're not already in the **lego-set-browser** directory, cd into it, then pr
    **2. Flask app in this folder → Azure Container Apps:**
    - Already uses DefaultAzureCredential + env vars COSMOS_ENDPOINT, COSMOS_DATABASE, COSMOS_CONTAINER
    - System-assigned managed identity for Cosmos DB (Built-in Data Reader)
-   - System-assigned managd identity for ACR pull
 ```
 
 This single prompt triggers a **three-skill chain** — watch Copilot invoke each one:
