@@ -1,10 +1,10 @@
 # Getting Started — Set Up the Starter App
 
-Open a new PowerShell session and set up the starter app using the following instructions.
+Set up the starter app using the following instructions.
 
 ## 1. Clone the Lab Repository
 
-Clone the lab repo and navigate into it:
+Open a new PowerShell session, clone the lab repo, and navigate into it:
 
 ```powershell
 git clone https://github.com/microsoft/Build26-LAB501.git
