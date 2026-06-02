@@ -6,7 +6,13 @@ AI can scaffold your Azure deployment in minutes. But would you push AI-generate
 
 > 💡 **Make sure your app is NOT currently running.** If you started `python app.py` during the checkpoint, stop it with **Ctrl+C** before proceeding.
 
-If you're not already in the **lego-set-browser** directory, cd into it, then prompt `copilot --yolo` to start a Copilot session in **yolo mode**. The `--yolo` flag auto-approves commands and skips confirmation prompts — safe here because the lab runs in a sandboxed environment, and it can save you several minutes over the course of the lab. Then, say to Copilot:
+If you're not already in the **lego-set-browser** directory, cd into it, then use the prompt below to start a Copilot session in **yolo mode**.
+
+```
+copilot --yolo
+```
+
+The `--yolo` flag auto-approves commands and skips confirmation prompts — safe here because the lab runs in a sandboxed environment, and it can save you several minutes over the course of the lab. Then, say to Copilot:
 
 ```
   Create and deploy 2 Azure services 
