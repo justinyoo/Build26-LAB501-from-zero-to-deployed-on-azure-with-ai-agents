@@ -44,7 +44,16 @@ This opens the interactive Copilot CLI session. All "Say to Copilot" prompts in 
 
 When prompted what account do you want to log into, select GitHub.com. Copilot will prompt you to enter any key to open a browser to complete login. Follow the instructions in Copilot to complete authorization using the signed-in account.
 
-## 5. Install the Azure Skills Plugin
+## 5. Disable Rubberduck Agent
+
+Use the following prompt in copilot to disable rubberduck agent in Copilot CLI as it's not needed for the lab session: 
+
+Say to Copilot
+```
+ Update the settings.json for Copilot CLI to disable rubber duck with this, "builtInAgents": {"rubberDuck": false},
+```    
+
+## 6. Install the Azure Skills Plugin
 
 1. Add the Microsoft marketplace:
    ```
@@ -60,6 +69,7 @@ When prompted what account do you want to log into, select GitHub.com. Copilot w
    ```
    /mcp reload
    ```
+4. **CLOSE YOUR TERMINAL** so that the changes to the copilot settings can be picked up when you next open copilot.  
 
 > 💡 **MCP tools vs. Azure skills:** The Azure MCP server provides **MCP tools** — low-level operations like listing resources, querying logs, and managing deployments. Azure **skills** are higher-level prompt instructions that chain these tools together with domain knowledge (e.g., `azure-diagnostics` knows how to follow a triage reasoning chain). This lab uses both: skills drive the workflow, MCP tools execute the Azure operations.
 
