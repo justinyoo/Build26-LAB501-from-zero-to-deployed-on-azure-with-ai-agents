@@ -4,7 +4,7 @@ It's 2 AM. Your app returns 503. You open a terminal. Pay attention to the AI's 
 
 ## Introduce the Failure
 
-Replace `<app>` and `<rg>` with your actual Container App name and resource group from Scenario 1A (run `azd env get-values` if you need to find them):
+Replace `<app>` and `<rg>` with your actual Container App name and resource group from Scenario 1A (run `azd env get-values` if you need to find them). Then, in a new powershell tab, run the following command:
 
 ```powershell
 az containerapp ingress update --name <app> -g <rg> --target-port 9999
